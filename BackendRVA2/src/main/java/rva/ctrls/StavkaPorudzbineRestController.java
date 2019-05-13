@@ -50,6 +50,7 @@ public class StavkaPorudzbineRestController {
 		return stavkaPorudzbineRepository.findByCenaLessThanOrderById(cena);
 	}
 
+	@CrossOrigin
 	@DeleteMapping (value = "stavkaPorudzbine/{id}")
 	public ResponseEntity<StavkaPorudzbine> deleteStavkaPorudzbine(@PathVariable("id") Integer id){
 		if(!stavkaPorudzbineRepository.existsById(id))
@@ -59,6 +60,7 @@ public class StavkaPorudzbineRestController {
 	}
 
 	//insert
+	@CrossOrigin
 	@PostMapping(value = "stavkaPorudzbine")
 	public ResponseEntity<Void> insertStavkaPorudzbine(@RequestBody StavkaPorudzbine stavkaPorudzbine){
 		if(stavkaPorudzbineRepository.existsById(stavkaPorudzbine.getId()))
@@ -69,6 +71,7 @@ public class StavkaPorudzbineRestController {
 	}
 
 	//update
+	@CrossOrigin
 	@PutMapping(value = "stavkaPorudzbine")
 	public ResponseEntity<Void> updateStavkaPorudzbine(@RequestBody StavkaPorudzbine stavkaPorudzbine){
 		if(!stavkaPorudzbineRepository.existsById(stavkaPorudzbine.getId()))
