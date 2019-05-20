@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class ArtiklService {
 
-    private readonly API_URL = 'http://localhost:8083/artikl';
+    private readonly API_URL = 'http://localhost:8083/artikl/';
 
     dataChange: BehaviorSubject<Artikl[]> = new BehaviorSubject<Artikl[]>([]);
 
@@ -21,5 +21,18 @@ export class ArtiklService {
             });
         
         return this.dataChange.asObservable();    
+    }
+
+    public addArtikl(artikl: Artikl): void {
+        this.httpClient.post(this.API_URL, artikl).subscribe();
+    }
+
+    public updateArtikl(artikl: Artikl): void {
+        this.httpClient.put(this.API_URL, artikl).subscribe();
+    }
+
+    public deleteArtikl(id: number): void {
+        console.log(this.API_URL + id);
+        this.httpClient.delete(this.API_URL + id).subscribe();
     }
 }
